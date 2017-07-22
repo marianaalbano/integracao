@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Gerencia de Docker da DexterOps</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">DexterOps</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="{% if request.path == '/docker_ger/' %} active {% endif %}">
+                        <a href="#" class="dropdown-toogle" data-toggle="dropdown"
+                           role="button" aria-haspopup="true" area-extended="false">Docker
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/docker_ger/">Gerencia de container</a></li>
+                            <li><a href="/container/new/">Novo container</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="{% if request.path == '/gitlab_ger/' %} active {% endif %}">
+                        <a href="#" class="dropdown-toogle" data-toggle="dropdown"
+                           role="button" aria-haspopup="true" area-extended="false">Gitlab
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/gitlab_ger/">Gerencia do gitlab</a></li>
+                            <li><a href="/project/new/">Novo projeto</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <br>
+    <br>
+    {% block content %}
+    {% endblock %}
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+    <script language="javascript" src="/static/js/docker.js"></script>
+    {% block jscode %}
+    {% endblock %}
+
+</body>
+</html>
+
+

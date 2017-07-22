@@ -1,0 +1,60 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+
+<br>
+<br>
+
+<div id="exTab2" class="container">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a href="#1" data-toggle="tab">Projetos</a>
+        </li>
+        <li><a href="#2" data-toggle="tab">Usuários</a>
+        </li>
+    </ul>
+
+    <div class="tab-content ">
+        <div class="tab-pane active" id="1">
+            <div class="panel-body">
+
+                <table class="table">
+                    <th>Nome</th>
+                    <th>Data de criação</th>
+                    <th>Último commit</th>
+                    {% for p in projects %}
+                    <tr>
+                        <td>{{p.name}}</td>
+                        <td>{{p.created_at.strftime('%d/%m/%Y %H:%M')}}</td>
+                        <td>{{p.last_activity_at.strftime('%d/%m/%Y %H:%M')}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane" id="2">
+
+            <div class="panel-body">
+                <table class="table">
+                    <th>Nome</th>
+                    <th>Username</th>
+                    <th>E-mail</th>
+                    {% for u in users %}
+                    <tr>
+                        <td>{{u.name}}</td>
+                        <td>{{u.username}}</td>
+                        <td>{{u.email}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+{% block jscode %}
+<link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+{% endblock %}

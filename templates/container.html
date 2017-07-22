@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+
+<br>
+<br>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading"><b>Running Containers</b></div>
+            <div class="panel-body">
+                <table class="table">
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>Status</th>
+                <th>Ações</th>
+                {% for c in containers %}
+                <tr>
+                    <td>{{c.Names[0]}}</td>
+                    <td>{{c.NetworkSettings.Networks.bridge.IPAddress}}</td>
+                    <td>{{c.Status}}</td>
+                    <td>
+                        <a href="" id="{{c.Id}}" class="start-container">
+                        <span class="glyphicon glyphicon-play"></span>
+                        </a>
+                        <a href="" id="{{c.Id}}" class="stop-container">
+                        <span class="glyphicon glyphicon-stop"></span>
+                        </a>
+                         <a href="" id="{{c.Id}}" class="remove-container">
+                        <span class="glyphicon glyphicon-remove"></span>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block jscode %}
+<link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+{% endblock %}

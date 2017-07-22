@@ -1,0 +1,46 @@
+#!/usr/bin/python
+
+from docker import Client
+
+class DockerModule:
+    def __init__(self):
+        try:
+            self.client = Client("tcp://192.168.201.126:2376", version="auto")
+        except Exception as e:
+            print 'Falhou ao conectar no docker: ',e
+
+    def list_containers(self):
+        containers = self.client.containers(all=True)
+        print containers
+        return containers
+
+    def start_container(self,id):
+        res = self.client.start(container=id)
+        return res
+
+    def stop_container(self, id):
+        res = self.client.stop(container=id)
+        return res
+
+    def delete_container(self,container):
+        self.stop_container(container)
+        self.client.remove_container(container=container)
+        return "Container removido com sucesso"
+
+
+    def create_container(self,**kwargs):
+        ports = kwargs.get("port".split(":"))
+        host_config = self.client.create_host_config(port_bindings={ports[0]:ports[0]})
+        res = self.client.create_container(name=kwargs.get("name"),
+                                           image=kwargs.get("image"),
+                                           command=kwargs.get("command"),
+                                           ports=[ports[0]],
+                                           host_config=host_config,
+                                           stdin_open=True,
+                                           detach=True,
+                                           tty=True)
+        return res
+
+
+
+
