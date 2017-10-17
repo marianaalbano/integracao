@@ -11,12 +11,12 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return redirect("/home/")
+    return redirect("/index/")
 
 
-@app.route("/home/")
+@app.route("/index/")
 def home():
-    return render_template("home.html")
+    return render_template("base.html")
 
 
 @app.route("/container/")

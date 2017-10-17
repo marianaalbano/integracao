@@ -7,50 +7,50 @@ class GitlabModule:
 
     def createprojects(self,**dados):
         try:
-            self.token = "y5BAhu9Tdmi84XjSY2yR"
+            self.token = "rsSMxQqJy2s1yVyFsmJe"
             self.recurso = "projects"
-            self.url = "http://10.100.0.62/api/v3/%s/?private_token=%s" %(self.recurso, self.token)
-            res = json.loads(requests.post(self.url, data=dados)._content)
+            self.url = "http://10.100.0.113/api/v4/%s?private_token=%s" %(self.recurso, self.token)
+            res = json.loads(requests.post(self.url, data=dados)._content.decode().decode('utf-8'))
 
             return res
 
         except Exception as e:
-            print e
+            print (e)
 
     def list_project(self):
-        self.token = "y5BAhu9Tdmi84XjSY2yR"
+        self.token = "rsSMxQqJy2s1yVyFsmJe"
         self.recurso = "projects"
-        self.url = "http://10.100.0.62/api/v3/%s/?private_token=%s" % (self.recurso, self.token)
+        self.url = "http://10.100.0.113/api/v4/%s/?private_token=%s" % (self.recurso, self.token)
+        print (self.url)
 
-        response = json.loads(requests.get(self.url)._content)
-
+        response = json.loads(requests.get(self.url)._content.decode('utf-8'))
         return response
 
-    def createuser(self, **dados):
+    def createuser(self, **kwargs):
         try:
-            self.token = "y5BAhu9Tdmi84XjSY2yR"
+            self.token = "rsSMxQqJy2s1yVyFsmJe"
             self.recurso = "users"
-            self.url = "http://10.100.0.62/api/v3/%s/?private_token=%s" % (self.recurso, self.token)
-            res = json.loads(requests.post(self.url, data=dados)._content)
+            self.url = "http://10.100.0.113/api/v4/%s?private_token=%s" % (self.recurso, self.token)
+            res = json.loads(requests.post(self.url, data=kwargs)._content.decode('utf-8'))
 
             return res
 
         except Exception as e:
-            print e
+            print (e)
 
     def list_user(self):
-        self.token = "y5BAhu9Tdmi84XjSY2yR"
+        self.token = "rsSMxQqJy2s1yVyFsmJe"
         self.recurso = "users"
-        self.url = "http://10.100.0.62/api/v3/%s/?private_token=%s" % (self.recurso, self.token)
+        self.url = "http://10.100.0.113/api/v4/%s/?private_token=%s" % (self.recurso, self.token)
 
-        response = json.loads(requests.get(self.url)._content)
+        response = json.loads(requests.get(self.url)._content.decode())
 
         return response
 
 if __name__ == '__main__':
     project = GitlabModule()
     lista = project.list_user()
-    print lista
+    print (lista)
 
     #print [{'name': l.get('name'), 'created_at': datetime.strptime(l.get('created_at'), "%Y-%m-%dT%H:%M:%S.%fZ"),
     #        'last_activity_at': datetime.strptime(l.get('created_at'), "%Y-%m-%dT%H:%M:%S.%fZ")} for l in lista]

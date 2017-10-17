@@ -1,83 +1,14 @@
-<html>
-<head>
-<title>Gerencia de Docker da DexterOps</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/home/">Inicio</a>
-        </div>
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="#" class="dropdown-toogle" data-toggle="dropdown"
-                       role="button" aria-haspopup="true" area-extended="false">Docker
-                    <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/container/">Gerencia do Docker</a></li>
-                        <li><a href="/container/new/">Novo container</a></li>
+{% block content %}
+<br>
+<br>
 
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="#" class="dropdown-toogle" data-toggle="dropdown"
-                       role="button" aria-haspopup="true" area-extended="false">GitLab
-                    <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/gitlab/">Gerencia do GitLab</a></li>
-                        <li><a href="/gitlab/new_user/">Novo Usuário</a></li>
-                        <li><a href="/gitlab/new_project/">Novo Projeto</a></li>
-
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="#" class="dropdown-toogle" data-toggle="dropdown"
-                       role="button" aria-haspopup="true" area-extended="false">Jenkins
-                    <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Gerencia do Jenkins</a></li>
-                        <li><a href="#">Novo Job</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="#" class="dropdown-toogle" data-toggle="dropdown"
-                       role="button" aria-haspopup="true" area-extended="false">Servidores
-                    <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Informação de Disco</a></li>
-                        <li><a href="#">Informação de Load</a></li>
-                        <li><a href="#">Informação de Memória</a></li>
-
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="#" class="dropdown-toogle" data-toggle="dropdown"
-                       role="button" aria-haspopup="true" area-extended="false">AWS
-                    <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Gerencia de EC2</a></li>
-                        <li><a href="#">Gerencia de SG</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
+<center><img src="/static/imgs/dexter.png"/>
     <br>
     <br>
-    {% block content %}
-    {% endblock %}
 
-
+<b><h4>Bem-vindo ao Painel de Gerenciamento da Dexter Courier</h4></b>
 
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
@@ -85,8 +16,7 @@
     <script language="javascript" src="/static/js/docker.js"></script>
     {% block jscode %}
     {% endblock %}
-
-</body>
-</html>
+</center>
 
 
+{% endblock %}
