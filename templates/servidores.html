@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+<br>
+
+<div class="container">
+    <div>
+        <h2>Status dos servidores</h2>
+        <p></p>
+    </div>
+    <div>
+      <h4>Load / Uptime</h4>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th class="danger">Gitlab</th>
+                <th class="info">Docker</th>
+                <th class="success">Jenkins</th>
+             </tr>
+        </thead>
+        <tbody>
+            <tr>
+            {% for l in load %}
+                <td>{{ l }}</td>
+            {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+    <div>
+      <h4>Memória</h4>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th class="danger">Gitlab</th>
+                <th class="info">Docker</th>
+                <th class="success">Jenkins</th>
+             </tr>
+        </thead>
+        <tbody>
+            <tr>
+            {% for m in memoria %}
+                <td>{{ m }}</td>
+            {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+    <div>
+      <h4>Disco</h4>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th class="danger">Gitlab</th>
+                <th class="info">Docker</th>
+                <th class="success">Jenkins</th>
+             </tr>
+        </thead>
+        <tbody>
+            <tr>
+            {% for d in disco %}
+                <td>{{ d }}</td>
+            {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

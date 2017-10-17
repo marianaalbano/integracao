@@ -1,10 +1,12 @@
-#!/usr/bin/python
+#!/usr/bin/python3
+
 from datetime import datetime
 
 from flask import Flask, render_template, redirect, request, jsonify
 
 from Modules.DockerModule import DockerModule
 from Modules.GitlabModule import GitlabModule
+from Modules.SSHModule import SSHModule
 
 app = Flask(__name__)
 
@@ -16,14 +18,14 @@ def index():
 
 @app.route("/index/")
 def home():
-    return render_template("base.html")
+    return render_template("index.html")
 
 
 @app.route("/container/")
 def docker_ger():
     dm = DockerModule()
     containers = dm.list_containers()
-    return render_template("container.html", containers=containers)
+    return render_template("docker.html", containers=containers)
 
 
 @app.route("/container/stop/", methods=["POST"])
@@ -108,6 +110,15 @@ def gitlab_ger():
     users = gm.list_user()
     return render_template("gitlab.html", projects=projects, users=users)
 
+
+
+@app.route("/servidores/")
+def ssh_load():
+    sm = SSHModule()
+    load = sm.load()
+    memoria = sm.memoria()
+    disco = sm.disco()
+    return render_template("servidores.html", load=load, memoria=memoria, disco=disco)
 
 if __name__ == '__main__':
     app.run(debug=True)
