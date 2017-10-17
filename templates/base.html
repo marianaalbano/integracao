@@ -40,6 +40,19 @@
                         <a href="/servidores/" role="button" aria-haspopup="true" area-extended="false">Servidores</a>
                      </li>
                 </ul>
+                <ul class="nav navbar-nav">
+                    <li class="{% if request.path == '/aws/' %} active {% endif %}">
+                        <a href="#" class="dropdown-toogle" data-toggle="dropdown"
+                           role="button" aria-haspopup="true" area-extended="false">AWS
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/aws/">Gerencia da AWS</a></li>
+                            <li><a href="/aws/new_ec2/">Novo EC2</a></li>
+                            <li><a href="/aws/new_sg/">Novo SG</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>

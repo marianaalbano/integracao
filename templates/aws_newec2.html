@@ -1,0 +1,50 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+{% if message %}
+<br>
+<br>
+<div class="alert alert-info" role="alert">
+  {{message}}
+</div>
+{% endif %}
+<br>
+<br>
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading"><b>Create EC2</b></div>
+            <div class="panel-body">
+                <form class="form-horizontal" method="post" action="/aws/new_ec2/">
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Imagem</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" name="imagem" placeholder="Digite o nome do EC2">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Security Group</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" name="sg" placeholder="Digite o Security Group">
+                      </div>
+                    </div>
+
+
+                    <div class="form-group">
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success">Criar</button>
+                      </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+<script language="javascript" src="/static/js/jquery.min.js"></script>
+<script language="javascript" src="/static/js/docker.js"></script>
+</body>
+</html>
+{% endblock %}

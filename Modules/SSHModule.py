@@ -2,7 +2,7 @@ import paramiko
 from paramiko import SSHClient
 
 
-class SSHModule():
+class SSHModule(object):
 
     def __init__(self):
         try:
@@ -21,13 +21,13 @@ class SSHModule():
                 self.client.connect(maquina, username='user', password='passwd')
                 stdin,stdout,stderr = self.client.exec_command('uptime')
                 if stderr.channel.recv_exit_status() != 0:
-                    stderr.channel.recv_exit_status()
+                    raise Exception(stderr.channel.recv_exit_status())
                     dados.append(stderr.read().decode('utf-8'))
                 else:
                     dados.append(stdout.read().decode('utf-8'))
             return dados
         except Exception as e:
-            return "Erro: %s" %e
+            return e
 
     def memoria(self):
         try:
@@ -43,7 +43,7 @@ class SSHModule():
                     dados.append(stdout.read().decode('utf-8'))
             return dados
         except Exception as e:
-            return "Erro: %s" %e
+            return e
 
 
     def disco(self):
@@ -60,5 +60,5 @@ class SSHModule():
                     dados.append(stdout.read().decode('utf-8'))
             return dados
         except Exception as e:
-            return "Erro: %s" %e
+            return e
 

@@ -1,9 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% if message %}
 <br>
 <br>
-
+<div class="alert alert-info" role="alert">
+  {{message}}
+</div>
+{% endif %}
+<br>
+<br>
 <div class="container">
     <div>
         <h2>Status dos servidores</h2>

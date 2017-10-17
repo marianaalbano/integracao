@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<br>
+<br>
+
+<div id="exTab2" class="container">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a href="#1" data-toggle="tab">EC2</a>
+        </li>
+        <li><a href="#2" data-toggle="tab">SECUTIRY GROUP</a>
+        </li>
+    </ul>
+
+    <div class="tab-content ">
+        <div class="tab-pane active" id="1">
+            <div class="panel-body">
+
+                <table class="table">
+                    <th>ID</th>
+                    <th>Tipo</th>
+                    <th>Security Group</th>
+                    {% for instance in instances %}
+                    <tr>
+                        <td>{{instance.id}}</td>
+                        <td>{{instance.instance_type}}</td>
+                        <td>{{instance.security_groups[0]['GroupName']}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane" id="2">
+
+            <div class="panel-body">
+                <table class="table">
+                    <th>Nome</th>
+                    <th>ID</th>
+
+                    {% for sg in security_groups %}
+                    <tr>
+                        <td>{{sg.group_name}}</td>
+                        <td>{{sg.group_id}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+{% block jscode %}
+<link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+{% endblock %}

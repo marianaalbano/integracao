@@ -2,8 +2,7 @@ import requests
 import json
 from datetime import datetime
 
-class GitlabModule:
-
+class GitlabModule(object):
 
     def createprojects(self,**dados):
         try:
@@ -15,13 +14,12 @@ class GitlabModule:
             return res
 
         except Exception as e:
-            print (e)
+            return e
 
     def list_project(self):
         self.token = "rsSMxQqJy2s1yVyFsmJe"
         self.recurso = "projects"
         self.url = "http://10.100.0.113/api/v4/%s/?private_token=%s" % (self.recurso, self.token)
-        print (self.url)
 
         response = json.loads(requests.get(self.url)._content.decode('utf-8'))
         return response
@@ -36,7 +34,7 @@ class GitlabModule:
             return res
 
         except Exception as e:
-            print (e)
+            return (e)
 
     def list_user(self):
         self.token = "rsSMxQqJy2s1yVyFsmJe"
